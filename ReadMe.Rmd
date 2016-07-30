@@ -1,0 +1,33 @@
+---
+title: "ReadMe"
+author: "CatGrey"
+date: "30 July 2016"
+output: html_document
+---
+
+The run_analysis.R script is organised into 5 stages detailed below, with one manual step required after the first phase as detailed below:
+
+**Stage 1:** a data folder is created if not already present in the currently working directory and the data files are downloaded to the data folder.
+
+***
+**Manual Step:** change the working directory to ./data/UCI HAR Dataset folder that has been created in the data folder.
+
+***
+
+**Stage 2:** merges the training and test sets into three grouped data sets:
++ Features data (featuresData)
++ Activity data (activityData)
++ Subjects data (subjectData)
+
+**Stage3:** extracts the desired Features variables which are the mean and standard deviation for each Features measurement (mean.sd.features) and updates the Features data (featuresData).
+
+**Stage 4:** enhances the readability of the data through the following steps:
+* Activity was recorded with integer codes, these are replaced with descriptors in the Activity data
+* Columns are renamed with readable headings in each data set (featureLabels, activityLabels)
+
+**Stage 5:** the data sets are combined into one data set and saved as a text file called *tidydata*.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```

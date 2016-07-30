@@ -1,0 +1,130 @@
+---
+title: "CodeBook"
+author: "CatGrey"
+date: "30 July 2016"
+output: html_document
+---
+
+### Information about Source Data Experiment
+
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial 
+linear acceleration and 3-axial angular velocity at a constant rate of 50Hz.
+ 
+The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cut-off frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
+
+#### Attribute Information:
+For each record in the dataset it is provided: 
+
+* Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration
+* Triaxial Angular velocity from the gyroscope
+* A 561-feature vector with time and frequency domain variables
+* Its activity label
+* An integer identifier of the subject who carried out the experiment
+* The activity name, which includes: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
+* The average of each measurement for each subject and each activity
+
+### Original Data Source
+***
+
+Human Activity Recognition Using Smartphones Dataset Data for analysis is downloaded from the this [URL](https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones): https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
+
+### Transformations
+
+The following transformations has been applied to the original dataset:
+
+**Merge of train and test set**: In the original data the train and test sets were separate files. These have now been merged together.
+
+**Extraction of mean and standard deviation features**: The original data included 561 difference variables including measures and descriptive statistics. Only the mean and standard deviations measures were kept, resulting in 66 variables. 
+
+**Include subject and activity detail**: A subject reference number has been added, this is an integer ranging between 1 and 30. The activity descriptions have also been added to the data set, these are as follows: 
+WALKING
+WALKING_UPSTAIRS
+WALKING_DOWNSTAIRS
+SITTING
+STANDING
+LAYING
+
+#### Aggregating data
+All the values are means, aggregated over 30 subjects and 6 activities, hence the resulting dataset is 180 rows by 68 columns.
+
+### Resulting Tidy dataset
+***
+
+**Variable Name**		| **Details**
+--------	            | ---------------------------------------------
+subjectId	      	|Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30
+activityName		| Factor with 6 levels WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
+tBodyAccMeanX	      | Average of Mean Value time domain Body Acceleration in x direction
+tBodyAccMeanY     	| Average of Mean Value time domain Body Acceleration in Y direction
+tBodyAccMeanZ	      | Average of Mean Value time domain Body Acceleration in Z direction
+tBodyAccStdX		| Average of Standard deviation time domain Body Acceleration in x direction
+tBodyAccStdY		| Average of Standard deviation time domain Body Acceleration in Y direction
+tBodyAccStdZ		| Average of Standard deviation time domain Body Acceleration in Z direction
+tGravityAccMeanX	      | Average of Mean Value time domain Gravity Acceleration in x direction
+tGravityAccMeanY	      | Average of Mean Value time domain Gravity Acceleration in Y direction
+tGravityAccMeanZ	      | Average of Mean Value time domain Gravity Acceleration in Z direction
+tGravityAccStdX		| Average of Standard deviation time domain Gravity Acceleration in x direction
+tGravityAccStdY		| Average of Standard deviation time domain Gravity Acceleration in Y direction
+tGravityAccStdZ		| Average of Standard deviation time domain Gravity Acceleration in Z direction
+tBodyAccJerkMeanX	      | Average of Mean Value time domain Body Acceleration Jerk in x direction
+tBodyAccJerkMeanY	      | Average of Mean Value time domain Body Acceleration Jerk in Y direction
+tBodyAccJerkMeanZ	      | Average of Mean Value time domain Body Acceleration Jerk in Z direction
+tBodyAccJerkStdX	      | Average of Standard deviation time domain Body Acceleration Jerk in x direction
+tBodyAccJerkStdY	      | Average of Standard deviation time domain Body Acceleration Jerk in Y direction
+tBodyAccJerkStdZ	      | Average of Standard deviation time domain Body Acceleration Jerk in Z direction
+tBodyGyroMeanX	      | Average of Mean Value time domain Body Gyro in x direction
+tBodyGyroMeanY	      | Average of Mean Value time domain Body Gyro in Y direction
+tBodyGyroMeanZ	      | Average of Mean Value time domain Body Gyro in Z direction
+tBodyGyroStdX		| Average of Standard deviation time domain Body Gyro in x direction
+tBodyGyroStdY		| Average of Standard deviation time domain Body Gyro in Y direction
+tBodyGyroStdZ		| Average of Standard deviation time domain Body Gyro in Z direction
+tBodyGyroJerkMeanX	| Average of Mean Value time domain Body Gyro Jerk signal in x direction
+tBodyGyroJerkMeanY	| Average of Mean Value time domain Body Gyro Jerk signal in Y direction
+tBodyGyroJerkMeanZ	| Average of Mean Value time domain Body Gyro Jerk signal in Z direction
+tBodyGyroJerkStdX 	| Average of Standard deviation time domain Body Gyro Jerk signal in x direction
+tBodyGyroJerkStdY 	| Average of Standard deviation time domain Body Gyro Jerk signal in Y direction
+tBodyGyroJerkStdZ 	| Average of Standard deviation time domain Body Gyro Jerk signal in Z direction
+tBodyAccMagMean   	| Average of Mean Value time domain Body Acceleration magnitude
+tBodyAccMagStd    	| Average of Standard deviation time domain Body Acceleration magnitude
+tGravityAccMagMean	| Average of Mean Value time domain Gravity Acceleration magnitude
+tGravityAccMagStd	      | Average of Standard deviation time domain Gravity Acceleration magnitude
+tBodyAccJerkMagMean	| Average of Mean Value time domain Body Acceleration jerk magnitude
+tBodyAccJerkMagStd	| Average of Standard deviation time domain Body Acceleration jerk magnitude
+tBodyGyroMagMean  	| Average of Mean Value time domain Body Gyro magnitude
+tBodyGyroMagStd   	| Average of Standard deviation time domain Body Gyro magnitude
+tBodyGyroJerkMagMean	| Average of Mean Value time domain Body Gyro Jerk magnitude
+tBodyGyroJerkMagStd	| Average of Standard deviation time domain Body Gyro Jerk magnitude
+fBodyAccMeanX     	| Average of Mean Value frequency domainBody Acceleration in x direction
+fBodyAccMeanY     	| Average of Mean Value frequency domainBody Acceleration in Y direction
+fBodyAccMeanZ     	| Average of Mean Value frequency domainBody Acceleration in Z direction
+fBodyAccStdX		| Average of Standard deviation frequency domainBody Acceleration in x direction
+fBodyAccStdY		| Average of Standard deviation frequency domainBody Acceleration in Y direction
+fBodyAccStdZ		| Average of Standard deviation frequency domainBody Acceleration in Z direction
+fBodyAccJerkMeanX 	| Average of Mean Value frequency domainBody Acceleration Jerk in x direction
+fBodyAccJerkMeanY 	| Average of Mean Value frequency domainBody Acceleration Jerk in Y direction
+fBodyAccJerkMeanZ 	| Average of Mean Value frequency domainBody Acceleration Jerk in Z direction
+fBodyAccJerkStdX  	| Average of Standard deviation frequency domainBody Acceleration Jerk in x direction
+fBodyAccJerkStdY  	| Average of Standard deviation frequency domainBody Acceleration Jerk in Y direction
+fBodyAccJerkStdZ  	| Average of Standard deviation frequency domainBody Acceleration Jerk in Z direction
+fBodyGyroMeanX    	| Average of Mean Value frequency domainBody Gyro in x direction
+fBodyGyroMeanY    	| Average of Mean Value frequency domainBody Gyro in Y direction
+fBodyGyroMeanZ    	| Average of Mean Value frequency domainBody Gyro in Z direction
+fBodyGyroStdX		| Average of Standard deviation frequency domainBody Gyro in x direction
+fBodyGyroStdY		| Average of Standard deviation frequency domainBody Gyro in Y direction
+fBodyGyroStdZ		| Average of Standard deviation frequency domainBody Gyro in Z direction
+fBodyAccMagMean   	| Average of Mean Value frequency domainBody Acceleration magnitude
+fBodyAccMagStd    	| Average of Standard deviation frequency domainBody Acceleration magnitude
+fBodyBodyAccJerkMagMean	| Average of Mean Value frequency domainBody Acceleration jerk magnitude
+fBodyBodyAccJerkMagStd	| Average of Standard deviation frequency domainBody Acceleration jerk magnitude
+fBodyBodyGyroMagMean	| Average of Mean Value frequency domainBody Body Gyro magnitude
+fBodyBodyGyroMagStd	| Average of Standard deviation frequency domainBody Body Gyro magnitude
+fBodyBodyGyroJerkMagMean| Average of Mean Value frequency domainBody Body Gyro jerk magnitude
+fBodyBodyGyroJerkMagStd	| Average of Standard deviation frequency domainBody Body Gyro jerk magnitude
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
